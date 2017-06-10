@@ -160,7 +160,7 @@ int main(int argc,char *argv[])
 	
 	//Add a NULL terminating character to make it a proper string before printing
 	response[received] = '\0';
-	//puts(response);
+	puts(response);
 	
 	/* save output to file */
 	FILE *f = fopen("test.html", "w");
