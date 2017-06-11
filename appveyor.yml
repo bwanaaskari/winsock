@@ -1,8 +1,6 @@
 version: 1.0.{build}
  
 install:
-  - cmd: set PATH=%PATH:c:\MinGW\bin
-
  
 before_build:
  
