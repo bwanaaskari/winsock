@@ -1,0 +1,19 @@
+version: 1.0.{build}
+ 
+install:
+  - cmd: set PATH=%PATH:c:\MinGW\bin
+
+ 
+before_build:
+ 
+build_script:
+  - cmd: gcc test.c -o test.exe -lws2_32
+ 
+test_script:
+
+# to run your custom scripts instead of provider deployments
+deploy_script:
+ 
+on_success:
+        
+environment:
