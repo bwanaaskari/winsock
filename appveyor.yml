@@ -26,3 +26,6 @@ environment:
 build_script:
   - if [%build_compiler%]==[mingw] if [%build_platform%]==[x86] SET PATH=C:\MinGW\bin;%PATH%
   - cmd: gcc test.c -o test.exe -lws2_32
+
+  artifacts:
+- path: test.exe
