@@ -52,5 +52,5 @@ deploy:
 
     appveyor_repo_tag: true
 	
-on_finish:
+  on_finish:
   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent
