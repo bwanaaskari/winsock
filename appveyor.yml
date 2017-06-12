@@ -24,7 +24,7 @@ environment:
       build_bindings: 1
 
 init:
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/    
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 build_script:
   - if [%build_compiler%]==[mingw] if [%build_platform%]==[x86] SET PATH=C:\MinGW\bin;%PATH%
@@ -53,4 +53,5 @@ deploy:
     appveyor_repo_tag: true
 
   on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+ 
