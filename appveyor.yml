@@ -13,8 +13,29 @@ environment:
 
   with_tiff: 1      # needs zlib and jpeg
   
-matrix:
+  matrix:
+
     - build_platform: "x86"
+
+      build_compiler: "msvc"
+
+    
+
+    - build_platform: "x64"
+
+      build_compiler: "msvc"
+
+    
+
+    - build_platform: "x86"
+
+      build_compiler: "mingw"
+
+      build_bindings: 1
+
+    
+
+    - build_platform: "x64"
 
       build_compiler: "mingw"
 
