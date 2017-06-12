@@ -27,5 +27,24 @@ build_script:
   - if [%build_compiler%]==[mingw] if [%build_platform%]==[x86] SET PATH=C:\MinGW\bin;%PATH%
   - cmd: gcc test.c -o test.exe -lws2_32
 
-  artifacts:
-- path: test.exe
+deploy:
+
+  #  release: test.exe
+
+  provider: GitHub
+
+  auth_token:
+
+    secure: b4398a0556a03f646dd837b170f273d33cc9b232
+
+  artifact: test.exe
+
+  draft: false
+
+  prerelease: false
+
+  on:
+
+    branch: master
+
+    appveyor_repo_tag: true
