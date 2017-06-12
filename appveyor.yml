@@ -29,4 +29,15 @@ build_script:
 
   
 
- 
+ deploy:
+  release: test-v$(appveyor_build_version)
+  description: 'Dev Release'
+  provider: GitHub
+  auth_token:
+    secure: <b4398a0556a03f646dd837b170f273d33cc9b232> # your encrypted token from GitHub
+  artifact: /.*\.nupkg/            # upload all NuGet packages to release assets
+  draft: false
+  prerelease: false
+  on:
+    branch: master                 # release from master branch only
+    appveyor_repo_tag: true        # deploy on tag push only
