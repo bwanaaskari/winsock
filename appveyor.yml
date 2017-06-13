@@ -241,13 +241,13 @@ build_script:
 
 # to run tests again only selected assemblies and/or categories
 test:
-  assemblies:
-    only:
+  # assemblies:
+    # only:
       # - asm1.dll
       # - asm2.dll
 
-  categories:
-    only:
+  # categories:
+    # only:
       # - UI
       # - E2E
 
