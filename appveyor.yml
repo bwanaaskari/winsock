@@ -93,7 +93,7 @@ shallow_clone: true                 # default is "false"
   # my_secure_var1:
     # secure: FW3tJ3fMncxvs58/ifSP7w==
 
-# environment:
+environment:
 #  global:
 #    connection_string: server=12;password=13;
 #    service_url: https://127.0.0.1:8090
