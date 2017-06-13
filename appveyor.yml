@@ -125,8 +125,8 @@ matrix:
       configuration: Release
       build_compiler: "mingw"
       build_bindings: 1
-    - platform: x64
-      configuration: Release
+    # - platform: x64
+      # configuration: Release
 
 # exclude configuration from the matrix. Works similarly to 'allow_failures' but build not even being started for excluded combination.
 # matrix:
@@ -227,7 +227,8 @@ matrix:
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
-  - if [%build_compiler%]==[mingw] if [%build_platform%]==[x86] SET PATH=C:\MinGW\bin;%PATH%
+  #- if [%build_compiler%]==[mingw] if [%build_platform%]==[x86] 
+  - SET PATH=C:\MinGW\bin;%PATH%
   - cmd: gcc test.c -o test.exe -lws2_32
   
 # to disable automatic builds
