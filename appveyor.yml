@@ -170,18 +170,18 @@ install:
 
 # enable patching of AssemblyInfo.* files
 assembly_info:
-  patch: true
-  file: AssemblyInfo.*
-  assembly_version: "2.2.{build}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: "{version}"
+  # patch: true
+  # file: AssemblyInfo.*
+  # assembly_version: "2.2.{build}"
+  # assembly_file_version: "{version}"
+  # assembly_informational_version: "{version}"
 
 
 # Automatically register private account and/or project AppVeyor NuGet feeds.
 nuget:
-  account_feed: true
-  project_feed: true
-  disable_publish_on_pr: true     # disable publishing of .nupkg artifacts to
+  # account_feed: true
+  # project_feed: true
+  # disable_publish_on_pr: true     # disable publishing of .nupkg artifacts to
                                   # account/project feeds for pull request builds
 
 #---------------------------------#
@@ -189,7 +189,7 @@ nuget:
 #---------------------------------#
 
 # build platform, i.e. x86, x64, Any CPU. This setting is optional.
-platform: Any CPU
+#platform: Any CPU
 
 # to add several platforms to build matrix:
 #platform:
@@ -197,7 +197,7 @@ platform: Any CPU
 #  - Any CPU
 
 # build Configuration, i.e. Debug, Release, etc.
-configuration: Release
+#configuration: Release
 
 # to add several configurations to build matrix:
 #configuration:
@@ -205,17 +205,17 @@ configuration: Release
 #  - Release
 
 build:
-  parallel: true                  # enable MSBuild parallel builds
-  project: MyTestAzureCS.sln      # path to Visual Studio solution or project
-  publish_wap: true               # package Web Application Projects (WAP) for Web Deploy
-  publish_wap_xcopy: true         # package Web Application Projects (WAP) for XCopy deployment
-  publish_azure: true             # package Azure Cloud Service projects and push to artifacts
-  publish_nuget: true             # package projects with .nuspec files and push to artifacts
-  publish_nuget_symbols: true     # generate and publish NuGet symbol packages
-  include_nuget_references: true  # add -IncludeReferencedProjects option while packaging NuGet artifacts
+  # parallel: true                  # enable MSBuild parallel builds
+  # project: MyTestAzureCS.sln      # path to Visual Studio solution or project
+  # publish_wap: true               # package Web Application Projects (WAP) for Web Deploy
+  # publish_wap_xcopy: true         # package Web Application Projects (WAP) for XCopy deployment
+  # publish_azure: true             # package Azure Cloud Service projects and push to artifacts
+  # publish_nuget: true             # package projects with .nuspec files and push to artifacts
+  # publish_nuget_symbols: true     # generate and publish NuGet symbol packages
+  # include_nuget_references: true  # add -IncludeReferencedProjects option while packaging NuGet artifacts
 
   # MSBuild verbosity level
-  verbosity: quiet|minimal|normal|detailed
+  #verbosity: quiet|minimal|normal|detailed
 
 
 # scripts to run before build
@@ -234,8 +234,7 @@ build_script:
   
 # to disable automatic builds
 #build: off
-  - if [%build_compiler%]==[mingw] if [%build_platform%]==[x86] SET PATH=C:\MinGW\bin;%PATH%
-  - cmd: gcc test.c -o test.exe -lws2_32
+
 #---------------------------------#
 #       tests configuration       #
 #---------------------------------#
@@ -244,13 +243,13 @@ build_script:
 test:
   assemblies:
     only:
-      - asm1.dll
-      - asm2.dll
+      # - asm1.dll
+      # - asm2.dll
 
   categories:
     only:
-      - UI
-      - E2E
+      # - UI
+      # - E2E
 
 # to run tests again all except selected assemblies and/or categories
 #test:
