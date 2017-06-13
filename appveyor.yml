@@ -98,7 +98,6 @@ environment:
 #    connection_string: server=12;password=13;
 #    service_url: https://127.0.0.1:8090
 #
-#  matrix:
 #  - db: mysql
 #    provider: mysql
 #
@@ -119,16 +118,15 @@ environment:
   
   appveyor_rdp_password: HelloWorld123
   
-# this is how to allow failing jobs in the matrix
 matrix:
   fast_finish: true     # set this flag to immediately finish build once one of the jobs fails.
   allow_failures:
     - platform: x86
-      configuration: Debug
+      configuration: Release
       build_compiler: "mingw"
       build_bindings: 1
-    # - platform: x64
-      # configuration: Release
+    - platform: x64
+      configuration: Release
 
 # exclude configuration from the matrix. Works similarly to 'allow_failures' but build not even being started for excluded combination.
 # matrix:
