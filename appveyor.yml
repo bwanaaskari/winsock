@@ -78,20 +78,20 @@ clone_folder: c:\projects\myproject
 shallow_clone: true                 # default is "false"
 
 # set clone depth
-clone_depth: 5                      # clone entire repository history if not defined
+#clone_depth: 5                      # clone entire repository history if not defined
 
 # setting up etc\hosts file
-hosts:
-  queue-server: 127.0.0.1
-  db.server.com: 127.0.0.2
+# hosts:
+  # queue-server: 127.0.0.1
+  # db.server.com: 127.0.0.2
 
 # environment variables
-environment:
-  my_var1: value1
-  my_var2: value2
+# environment:
+  # my_var1: value1
+  # my_var2: value2
   # this is how to set encrypted variable. Go to "Encrypt data" page in account menu to encrypt data.
-  my_secure_var1:
-    secure: FW3tJ3fMncxvs58/ifSP7w==
+  # my_secure_var1:
+    # secure: FW3tJ3fMncxvs58/ifSP7w==
 
 # environment:
 #  global:
@@ -127,8 +127,8 @@ matrix:
       configuration: Debug
       build_compiler: "mingw"
       build_bindings: 1
-    - platform: x64
-      configuration: Release
+    # - platform: x64
+      # configuration: Release
 
 # exclude configuration from the matrix. Works similarly to 'allow_failures' but build not even being started for excluded combination.
 # matrix:
@@ -137,15 +137,15 @@ matrix:
       # configuration: Debug
 
 # build cache to preserve files/folders between builds
-cache:
-  - packages -> **\packages.config  # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
-  - projectA\libs
-  - node_modules                    # local npm modules
+#cache:
+  # - packages -> **\packages.config  # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
+  # - projectA\libs
+  # - node_modules                    # local npm modules
   # - %LocalAppData%\NuGet\Cache    # NuGet < v3
   # - %LocalAppData%\NuGet\v3-cache  # NuGet v3
 
 # enable service required for build/tests
-services:
+#services:
   # - mssql2014           # start SQL Server 2014 Express
   # - mssql2014rs         # start SQL Server 2014 Express and Reporting Services
   # - mssql2012sp1        # start SQL Server 2012 SP1 Express
