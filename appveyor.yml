@@ -296,7 +296,7 @@ artifacts:
 
   # pushing a single file with environment variable in path and "Deployment name" specified
   - path: winsock\bin\$(configuration)
-    name: test-v1.0.{build}
+    name: test-v{version}
 
   # pushing entire folder as a zip archive
   #- path: logs
