@@ -3,9 +3,8 @@ environment:
   appveyor_repo_tag: true
 build_script:
 - cmd: >-
-    SET PATH=C:\MinGW\bin;%PATH%
-- cmd: >-
-    gcc test.c -o test.exe -lws2_32
+    - SET PATH=C:\MinGW\bin;%PATH%
+      - cmd: gcc test.c -o test.exe -lws2_32
 artifacts:
 - path: '*.*'
   name: test
@@ -14,10 +13,10 @@ deploy:
   tag: test
   release: test
   auth_token:
-    secure: b4398a0556a03f646dd837b170f273d33cc9b232
-  artifact: /.\*.*
+    secure: WOsn1mdYHXDFiOVkMh64OzXvdCX3cHZqEVS2qN3gOr5Jc9lp4t2PRTtK7yEJ34np
+  artifact: '*.*'
   draft: false
-  force_update: true
+  force_update: false
 notifications:
 - provider: Email
   to:
