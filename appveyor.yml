@@ -4,10 +4,9 @@ environment:
 build_script:
 - cmd: >-
     SET PATH=C:\MinGW\bin;%PATH%
-
     gcc test.c -o test.exe -lws2_32
 artifacts:
-- path: '*.*'
+- path: '.*\.*'
   name: test
 deploy:
 - provider: GitHub
@@ -15,7 +14,7 @@ deploy:
   release: test
   auth_token:
     secure: WOsn1mdYHXDFiOVkMh64OzXvdCX3cHZqEVS2qN3gOr5Jc9lp4t2PRTtK7yEJ34np
-  artifact: '*.*'
+  artifact: '.*\.*'
   draft: false
   force_update: false
 notifications:
