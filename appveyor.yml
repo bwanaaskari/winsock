@@ -14,7 +14,7 @@ deploy:
   tag: test
   release: test
   auth_token:
-    secure: EPk5lRvY+SRc5uziVGPxH7G/Xqmn+RX+th88P82UEbvXGYxhuEx7eYhcxDWdD98D
+    secure: b4398a0556a03f646dd837b170f273d33cc9b232
   artifact: '*.*'
   draft: false
   force_update: false
