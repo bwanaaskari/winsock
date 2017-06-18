@@ -17,7 +17,7 @@ deploy:
     secure: b4398a0556a03f646dd837b170f273d33cc9b232
   artifact: '*.*'
   draft: false
-  force_update: false
+  force_update: true
 notifications:
 - provider: Email
   to:
