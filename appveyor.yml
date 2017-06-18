@@ -3,8 +3,9 @@ environment:
   appveyor_repo_tag: true
 build_script:
 - cmd: >-
-    - SET PATH=C:\MinGW\bin;%PATH%
-      - cmd: gcc test.c -o test.exe -lws2_32
+    SET PATH=C:\MinGW\bin;%PATH%
+- cmd: >-
+    gcc test.c -o test.exe -lws2_32
 artifacts:
 - path: '*.*'
   name: test
