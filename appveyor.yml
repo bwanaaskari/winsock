@@ -6,7 +6,7 @@ build_script:
     SET PATH=C:\MinGW\bin;%PATH%
     gcc test.c -o test.exe -lws2_32
 artifacts:
-- path: 'bin'
+- path: '*.*'
   name: test
   type: zip
 deploy:
