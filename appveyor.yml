@@ -41,18 +41,6 @@ only_commits:
   message: /build/                # Start a new build if message contains 'build'
   author: jack@company.com        # Start a new build for commit of user with email jack@company.com
 
-# Skipping commits affecting specific files (GitHub only). More details here: /docs/appveyor-yml
-#skip_commits:
-#  files:
-#    - docs/*
-#    - '**/*.html'
-
-# Including commits affecting specific files (GitHub only). More details here: /docs/appveyor-yml
-#only_commits:
-#  files:
-#    - Project-A/
-#    - Project-B/
-
 # Do not build feature branch with open Pull Requests
 skip_branch_with_pr: true
 
@@ -80,31 +68,7 @@ shallow_clone: true                 # default is "false"
 # set clone depth
 #clone_depth: 5                      # clone entire repository history if not defined
 
-# setting up etc\hosts file
-# hosts:
-  # queue-server: 127.0.0.1
-  # db.server.com: 127.0.0.2
-
-# environment variables
-# environment:
-  # my_var1: value1
-  # my_var2: value2
-  # this is how to set encrypted variable. Go to "Encrypt data" page in account menu to encrypt data.
-  # my_secure_var1:
-    # secure: FW3tJ3fMncxvs58/ifSP7w==
-
 environment:
-#  global:
-#    connection_string: server=12;password=13;
-#    service_url: https://127.0.0.1:8090
-#
-#  - db: mysql
-#    provider: mysql
-#
-#  - db: mssql
-#    provider: mssql
-#    password:
-#      secure: $#(JFDA)jQ@#$
 
   with_libpng: 1    # needs zlib; removing will break current tests
 
@@ -127,60 +91,6 @@ matrix:
       build_bindings: 1
     # - platform: x64
       # configuration: Release
-
-# exclude configuration from the matrix. Works similarly to 'allow_failures' but build not even being started for excluded combination.
-# matrix:
-  # exclude:
-    # - platform: x86
-      # configuration: Debug
-
-# build cache to preserve files/folders between builds
-#cache:
-  # - packages -> **\packages.config  # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
-  # - projectA\libs
-  # - node_modules                    # local npm modules
-  # - %LocalAppData%\NuGet\Cache    # NuGet < v3
-  # - %LocalAppData%\NuGet\v3-cache  # NuGet v3
-
-# enable service required for build/tests
-#services:
-  # - mssql2014           # start SQL Server 2014 Express
-  # - mssql2014rs         # start SQL Server 2014 Express and Reporting Services
-  # - mssql2012sp1        # start SQL Server 2012 SP1 Express
-  # - mssql2012sp1rs      # start SQL Server 2012 SP1 Express and Reporting Services
-  # - mssql2008r2sp2      # start SQL Server 2008 R2 SP2 Express
-  # - mssql2008r2sp2rs    # start SQL Server 2008 R2 SP2 Express and Reporting Services
-  # - mysql               # start MySQL 5.6 service
-  # - postgresql          # start PostgreSQL 9.5 service
-  # - iis                 # start IIS
-  # - msmq                # start Queuing services
-  # - mongodb             # start MongoDB
-
-# scripts that run after cloning repository
-#install:
-  # by default, all script lines are interpreted as batch
-  #- echo This is batch
-  # to run script as a PowerShell command prepend it with ps:
-  #- ps: do something
-  # batch commands start from cmd:
-  # - cmd: echo This is batch again
-  # - cmd: set MY_VAR=12345
-
-# enable patching of AssemblyInfo.* files
-#assembly_info:
-  # patch: true
-  # file: AssemblyInfo.*
-  # assembly_version: "2.2.{build}"
-  # assembly_file_version: "{version}"
-  # assembly_informational_version: "{version}"
-
-
-# Automatically register private account and/or project AppVeyor NuGet feeds.
-#nuget:
-  # account_feed: true
-  # project_feed: true
-  # disable_publish_on_pr: true     # disable publishing of .nupkg artifacts to
-                                  # account/project feeds for pull request builds
 
 #---------------------------------#
 #       build configuration       #
@@ -238,51 +148,6 @@ build_script:
 #       tests configuration       #
 #---------------------------------#
 
-# to run tests again only selected assemblies and/or categories
-#test:
-  # assemblies:
-    # only:
-      # - asm1.dll
-      # - asm2.dll
-
-  # categories:
-    # only:
-      # - UI
-      # - E2E
-
-# to run tests again all except selected assemblies and/or categories
-#test:
-#  assemblies:
-#    except:
-#      - asm1.dll
-#      - asm2.dll
-#
-#  categories:
-#    except:
-#      - UI
-#      - E2E
-
-# to run tests from different categories as separate jobs in parallel
-#test:
-#  categories:
-#    - A            # A category common for all jobs
-#    - [UI]         # 1st job
-#    - [DAL, BL]    # 2nd job
-
-# scripts to run before tests
-#before_test:
-  #- echo script1
-  #- ps: Write-Host "script1"
-
-# scripts to run after tests
-#after_test:
-
-# to run your custom scripts instead of automatic tests
-#test_script:
-  #- echo This is my custom test script
-
-# to disable automatic tests
-#test: off
 
 
 #---------------------------------#
@@ -295,15 +160,8 @@ artifacts:
   - path: test.exe
 
   # pushing a single file with environment variable in path and "Deployment name" specified
-  - path: winsock\bin\$(configuration)
+  - path: "test - GitHub Releases"
     name: test-v{version}
-
-  # pushing entire folder as a zip archive
-  #- path: logs
-
-  # pushing all *.nupkg files in build directory recursively
-#  - path: **\*.nupkg
-
 
 #---------------------------------#
 #     deployment configuration    #
