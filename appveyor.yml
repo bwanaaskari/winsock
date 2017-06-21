@@ -1,28 +1,19 @@
 version: 1.0.{build}
-environment:
-  appveyor_repo_tag: true
 build_script:
 - cmd: >-
     SET PATH=C:\MinGW\bin;%PATH%
-- cmd: >-
+
     gcc test.c -o test.exe -lws2_32
-
-#---------------------------------#
-#      artifacts configuration    #
-#---------------------------------#
-
 artifacts:
-
-  # pushing a single file
-  - path: '**\*.*'
-  
+- path: '**\*.*'
+  name: test
 deploy:
 - provider: GitHub
   tag: test
   release: test
   auth_token:
     secure: WOsn1mdYHXDFiOVkMh64OzXvdCX3cHZqEVS2qN3gOr5Jc9lp4t2PRTtK7yEJ34np
-  artifact: '*.*'
+  artifact: '*.zip'
   draft: false
   force_update: true
 notifications:
@@ -33,3 +24,5 @@ notifications:
   on_build_success: false
   on_build_failure: false
   on_build_status_changed: true
+on_success:
+- cmd: 7z a test.zip %APPVEYOR_BUILD_FOLDER%\path\to\bin\*.*
