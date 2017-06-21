@@ -14,7 +14,7 @@ build_script:
 artifacts:
 
   # pushing a single file
-  - path: winsock
+  - path: '**\*.*'
   
 deploy:
 - provider: GitHub
