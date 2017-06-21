@@ -14,7 +14,8 @@ build_script:
 artifacts:
 
   # pushing a single file
-  - path: test.zip
+  - path: '*.*'
+  - type: zip
   
 deploy:
 - provider: GitHub
@@ -22,7 +23,7 @@ deploy:
   release: test
   auth_token:
     secure: WOsn1mdYHXDFiOVkMh64OzXvdCX3cHZqEVS2qN3gOr5Jc9lp4t2PRTtK7yEJ34np
-  artifact: '*.*'
+  artifact: test.zip
   draft: false
   force_update: true
 notifications:
