@@ -4,6 +4,8 @@ build_script:
     SET PATH=C:\MinGW\bin;%PATH%
 
     gcc test.c -o test.exe -lws2_32
+on_success:
+- cmd: 7z a test.zip c:\project\winsock\*.*	
 artifacts:
 - path: '**\*.*'
   name: test
@@ -24,5 +26,3 @@ notifications:
   on_build_success: false
   on_build_failure: false
   on_build_status_changed: true
-on_success:
-- cmd: 7z a test.zip **\*.*
