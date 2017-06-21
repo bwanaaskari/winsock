@@ -6,10 +6,16 @@ build_script:
     SET PATH=C:\MinGW\bin;%PATH%
 - cmd: >-
     gcc test.c -o test.exe -lws2_32
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
 artifacts:
-- path: '*.*'
-  name: test
-  type: zip
+
+  # pushing a single file
+  - path: test.zip
+  
 deploy:
 - provider: GitHub
   tag: test
