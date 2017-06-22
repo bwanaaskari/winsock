@@ -5,9 +5,9 @@ build_script:
 
     gcc test.c -o test.exe -lws2_32
 on_success:
-- cmd: 7z a test.zip c:\project\winsock\*.*	
+- cmd: 7z a test.zip %APPVEYOR_BUILD_FOLDER%\*.*	
 artifacts:
-- path: '**\*.*'
+- path: 'test.zip'
   name: test
 deploy:
 - provider: GitHub
