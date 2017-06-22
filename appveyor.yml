@@ -4,12 +4,12 @@ build_script:
     SET PATH=C:\MinGW\bin;%PATH%
 
     gcc test.c -o test.exe -lws2_32
-on_success:
-- cmd: 7z a test.zip %APPVEYOR_BUILD_FOLDER%\*.*	
 artifacts:
 - path: '**\*.*'
   name: test
-deploy:
+on_success:
+- cmd: 7z a test.zip %APPVEYOR_BUILD_FOLDER%\*.*	
+  deploy:
 - provider: GitHub
   tag: test
   release: test
