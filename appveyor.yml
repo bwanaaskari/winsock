@@ -7,7 +7,7 @@ build_script:
 on_success:
 - cmd: 7z a test.zip %APPVEYOR_BUILD_FOLDER%\*.*	
 artifacts:
-- path: 'test.zip'
+- path: '**\*.*'
   name: test
 deploy:
 - provider: GitHub
