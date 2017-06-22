@@ -7,7 +7,7 @@ build_script:
 
     7z a test.zip %APPVEYOR_BUILD_FOLDER%\*.*
 artifacts:
-- path: '**\*.*zip'
+- path: '**\*.zip'
   name: test
 deploy:
 - provider: GitHub
