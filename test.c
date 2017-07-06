@@ -42,28 +42,28 @@ int main(int argc,char *argv[])
     if(!strcmp(argv[3],"GET"))
     {
         printf("Process 1\n");
-        message_size+=strlen("%s %s%s%s HTTP/1.0\r\nHost: %s\r\n");        /* method         */
-        message_size+=strlen(argv[3]);                         /* path           */
-        message_size+=strlen(path);                         /* headers        */
+        message_size+=strlen("%s %s%s%s HTTP/1.0\r\nHost: %s\r\n");        	/* method         */
+        message_size+=strlen(argv[3]);                         				/* path           */
+        message_size+=strlen(path);                        		 			/* headers        */
         if(argc>5)
-            message_size+=strlen(argv[5]);                     /* query string   */
-        for(i=6;i<argc;i++)                                    /* headers        */
-            message_size+=strlen(argv[i])+strlen("\r\n");
-        message_size+=strlen("\r\n");                          /* blank line     */
+            message_size+=strlen(argv[5]);                     				/* query string   */
+        for(i=6;i<argc;i++)                                    				/* headers        */
+            message_size+=strlen(argv[i])+strlen("\r\n");				
+        message_size+=strlen("\r\n");                          				/* blank line     */
     }
     else
     {
                 printf("Process 2\n");
         message_size+=strlen("%s %s HTTP/1.0\r\nHost: %s\r\n");
-        message_size+=strlen(argv[3]);                         /* method         */
-        message_size+=strlen(path);                            /* path           */
-        for(i=6;i<argc;i++)                                    /* headers        */
-            message_size+=strlen(argv[i])+strlen("\r\n");
-        if(argc>5)
-            message_size+=strlen("Content-Length: %d\r\n")+10; /* content length */
-        message_size+=strlen("\r\n");                          /* blank line     */
-        if(argc>5)
-            message_size+=strlen(argv[5]);                     /* body           */
+        message_size+=strlen(argv[3]);                         				/* method         */
+        message_size+=strlen(path);                            				/* path           */
+        for(i=6;i<argc;i++)                                    				/* headers        */
+            message_size+=strlen(argv[i])+strlen("\r\n");				
+        if(argc>5)				
+            message_size+=strlen("Content-Length: %d\r\n")+10; 				/* content length */
+        message_size+=strlen("\r\n");                          				/* blank line     */
+        if(argc>5)				
+            message_size+=strlen(argv[5]);                     				/* body           */
     }
             printf("Allocating...\n");
     /* allocate space for the message */
@@ -74,30 +74,30 @@ int main(int argc,char *argv[])
     {
         if(argc>5)
             sprintf(message,"%s %s%s%s HTTP/1.0\r\nHost: %s\r\n",
-                strlen(argv[3])>0?argv[3]:"GET",               /* method         */
-                path,                                          /* path           */
-                strlen(argv[5])>0?"?":"",                      /* ?              */
-                strlen(argv[5])>0?argv[5]:"",host);            /* query string   */
-        else
-            sprintf(message,"%s %s HTTP/1.0\r\nHost: %s\r\n",
-                strlen(argv[3])>0?argv[3]:"GET",               /* method         */
-                path,host);                                    /* path           */
-        for(i=6;i<argc;i++)                                    /* headers        */
-            {strcat(message,argv[i]);strcat(message,"\r\n");}
-        strcat(message,"\r\n");                                /* blank line     */
+                strlen(argv[3])>0?argv[3]:"GET",               				/* method         */
+                path,                                          				/* path           */
+                strlen(argv[5])>0?"?":"",                      				/* ?              */
+                strlen(argv[5])>0?argv[5]:"",host);            				/* query string   */
+        else				
+            sprintf(message,"%s %s HTTP/1.0\r\nHost: %s\r\n",				
+                strlen(argv[3])>0?argv[3]:"GET",               				/* method         */
+                path,host);                                    				/* path           */
+        for(i=6;i<argc;i++)                                    				/* headers        */
+            {strcat(message,argv[i]);strcat(message,"\r\n");}				
+        strcat(message,"\r\n");                                				/* blank line     */
     }
     else
     {
         sprintf(message,"%s %s HTTP/1.0\r\nHost: %s\r\n",
-            strlen(argv[3])>0?argv[3]:"POST",                  /* method         */
-            path,host);                                        /* path           */
-        for(i=6;i<argc;i++)                                    /* headers        */
+            strlen(argv[3])>0?argv[3]:"POST",                  				/* method         */
+            path,host);                                        				/* path           */
+        for(i=6;i<argc;i++)                                    				/* headers        */
             {strcat(message,argv[i]);strcat(message,"\r\n");}
         if(argc>5)
             sprintf(message+strlen(message),"Content-Length: %d\r\n",(int)strlen(argv[5]));
-        strcat(message,"\r\n");                                /* blank line     */
-        if(argc>5)
-            strcat(message,argv[5]);                           /* body           */
+        strcat(message,"\r\n");                                				/* blank line     */
+        if(argc>5)				
+            strcat(message,argv[5]);                           				/* body           */
     }
     printf("Processed\n");
     /* What are we going to send? */
