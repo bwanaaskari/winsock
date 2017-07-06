@@ -1,0 +1,28 @@
+version: 1.0.{build}
+build_script:
+- cmd: >-
+    SET PATH=C:\MinGW\bin;%PATH%
+
+    gcc test.c -o test.exe -lws2_32
+
+    7z a test.zip %APPVEYOR_BUILD_FOLDER%\*.*
+artifacts:
+- path: '**\*.zip'
+  name: test
+deploy:
+- provider: GitHub
+  tag: test
+  release: test
+  auth_token:
+    secure: WOsn1mdYHXDFiOVkMh64OzXvdCX3cHZqEVS2qN3gOr5Jc9lp4t2PRTtK7yEJ34np
+  artifact: test.zip
+  draft: false
+  force_update: true
+notifications:
+- provider: Email
+  to:
+  - timsandhu@live.com
+  subject: github compile & deploy
+  on_build_success: false
+  on_build_failure: false
+  on_build_status_changed: true
